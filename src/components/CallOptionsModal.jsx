@@ -1,12 +1,12 @@
 import React from 'react';
-import { HiX, HiPhone } from 'react-icons/hip';
+import { HiX, HiPhone } from 'react-icons/hi';
 
 const CallOptionsModal = ({ isOpen, onClose }) => {
     if (!isOpen) return null;
 
     const numbers = [
-        { label: 'Primary Contact', phone: '8608807283' },
-        { label: 'Secondary Contact', phone: '9943025989' }
+        { label: 'Kumar', phone: '8608807283' },
+        { label: 'Hari', phone: '9943025989' }
     ];
 
     const handleCall = (phone) => {
