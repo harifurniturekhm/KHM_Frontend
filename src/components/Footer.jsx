@@ -1,7 +1,11 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { HiPhone, HiMail, HiLocationMarker } from 'react-icons/hi';
+import CallOptionsModal from './CallOptionsModal';
 
 const Footer = () => {
+    const [isPhoneModalOpen, setIsPhoneModalOpen] = useState(false);
+
     return (
         <footer className="bg-dark-900 text-gray-300">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
@@ -37,9 +41,13 @@ const Footer = () => {
                     <div>
                         <h4 className="font-display font-semibold text-white mb-4">Contact Info</h4>
                         <div className="space-y-3">
-                            <a href="tel:+918608807283" className="flex items-center gap-3 text-sm text-gray-400 hover:text-primary transition-colors">
-                                <HiPhone className="w-4 h-4 text-primary" /> +91 86088 07283,+91 99430 25989
-                            </a>
+                            <button
+                                onClick={() => setIsPhoneModalOpen(true)}
+                                className="flex items-center gap-3 text-sm text-gray-400 hover:text-primary transition-colors text-left"
+                            >
+                                <HiPhone className="w-4 h-4 text-primary shrink-0" />
+                                <span>+91 86088 07283, +91 99430 25989</span>
+                            </button>
                             <a href="mailto:harifurniturekhm@gmail.com" className="flex items-center gap-3 text-sm text-gray-400 hover:text-primary transition-colors">
                                 <HiMail className="w-4 h-4 text-primary" /> harifurniturekhm@gmail.com
                             </a>
@@ -55,7 +63,12 @@ const Footer = () => {
                     <p className="text-sm text-gray-500">© {new Date().getFullYear()} Hari Furniture & Co. All rights reserved.</p>
                 </div>
             </div>
-        </footer>
+
+            <CallOptionsModal
+                isOpen={isPhoneModalOpen}
+                onClose={() => setIsPhoneModalOpen(false)}
+            />
+        </footer >
     );
 };
 
